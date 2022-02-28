@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace CasoTesteSalto.ConsoleApp
 {
@@ -6,78 +8,35 @@ namespace CasoTesteSalto.ConsoleApp
     {
         static void Main(string[] args)
         {
-            int n, k, casoAtual;
-            int contador =0;
+            int i = 0;
+            int j = 1;
 
-            casoAtual = 1;
+            List<int> listaSoldados = new List<int>() {1,2,3,4,5};
 
-            Console.Write("número de casos: ");
-            int numeroCasos = int.Parse(Console.ReadLine());
-
-            while (contador < numeroCasos)
+            while (listaSoldados.Count != 1)
             {
-                Console.Write("número de elementos: ");
-                n = int.Parse(Console.ReadLine());
-
-                Console.Write("número de saltos: ");
-                k = int.Parse(Console.ReadLine());
-
-                Console.Write("entrada do caso: " + n + " " + k);
-                Console.ReadKey();
-                string caso = n + " " + k;
-
-                string[] dividido = caso.Split(' ');
-                n = int.Parse(dividido[0]);
-                k = int.Parse(dividido[1]);
-
-
-                // Random aleatorio = new Random();
-
-                int vitima1 = 2;//aleatorio.Next(1,6);
-
-                int[] roda = new int[n];
-
-                for (int i = 0; i < n; i++) //id elementos
+                if (i < listaSoldados.Count)
                 {
-                    roda[i] = i+1;
-                }
+                    listaSoldados.Remove(listaSoldados[j]);
+                    i++;
+                    j++;
 
-                for (int i = 0; i < k; i++)
-                {
-
-
-                    for (int j = 0; j < n; j++)
+                    if (i >= listaSoldados.Count)
                     {
-                        if (roda[j] == vitima1)
-                        {
-                            roda[j] = 0;
-                            for (int x = 0; x <= n; x++)
-                            {
-                                if (roda[x] == 0)
-                                {
-                                    if (x < n)
-                                    {
-                                        roda[x + k] = 0;
-                                    }
-                                }
-                                else
-                                    continue;
-                            }
-                        }
+                        i = 0;
+                    }
+
+                    if (j >= listaSoldados.Count)
+                    {
+                        j = 0;
                     }
                 }
-
-                foreach (uint v in roda)
-                {
-                    if (v != 0)
-                    {
-                        Console.WriteLine("\nCaso " + casoAtual + ": " + v);
-                    }
-                }
-                casoAtual++;
+                else i = 0;
             }
 
-            Console.ReadKey();
+        Console.Write("Restou o elemento {0}", listaSoldados[0]);
+        Console.ReadKey();
         }
     }
 }
+

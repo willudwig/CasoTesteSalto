@@ -11,7 +11,7 @@ namespace CasoTesteSalto.ConsoleApp
             int i = 0;
             int j = 1;
 
-            List<int> listaSoldados = new List<int>() {1,2,3,4,5};
+            List<int> listaSoldados = new List<int>() {1,2,3,4,5,6,7,8};
 
             while (listaSoldados.Count != 1)
             {
@@ -29,6 +29,10 @@ namespace CasoTesteSalto.ConsoleApp
                     if (j >= listaSoldados.Count)
                     {
                         j = 0;
+                        if (j == i)
+                        {
+                            j++;
+                        }
                     }
                 }
                 else i = 0;
